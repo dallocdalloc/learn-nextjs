@@ -1,20 +1,17 @@
 export const metadata = {
-    title: "Home",
+  title: "Home",
 };
 
 const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
 async function getMovies() {
-    const response = await fetch(URL);
-    const json = await response.json();
-    return json;  
+  await new Promise((resolve) => setTimeout(resolve, 10000));
+  const response = await fetch(URL);
+  const json = await response.json();
+  return json;
 }
 
 export default async function HomePage() {
-    const movies = await getMovies();
-    return (
-        <div>
-            {JSON.stringify(movies)}
-        </div>
-    );
+  const movies = await getMovies();
+  return <div>{JSON.stringify(movies)}</div>;
 }
